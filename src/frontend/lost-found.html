@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Lost & Found - CollegeBuddy</title>
+
+    <link rel="stylesheet" href="./css/lost-found.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            College<span>Buddy</span>
+        </div>
+
+        <div class="nav-links">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="resources.html">
+                Resources
+            </a>
+
+            <a
+                href="lost-found.html"
+                class="active"
+            >
+                Lost & Found
+            </a>
+
+        </div>
+
+        <div class="nav-right">
+
+            <a href="profile.html">
+                👤 Profile
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <main>
+
+        <!-- HEADER -->
+
+        <section class="page-header">
+
+            <div>
+
+                <h1>
+                    Lost & Found
+                </h1>
+
+                <p>
+                    Help your college community find
+                    lost belongings.
+                </p>
+
+            </div>
+
+
+            <a
+                href="add-lost-found.html"
+                class="report-btn"
+            >
+                + Report Item
+            </a>
+
+        </section>
+
+
+        <!-- SEARCH -->
+
+        <section class="search-section">
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search items..."
+            >
+
+
+            <select id="typeFilter">
+
+                <option value="">
+                    All Items
+                </option>
+
+                <option value="lost">
+                    Lost Items
+                </option>
+
+                <option value="found">
+                    Found Items
+                </option>
+
+            </select>
+
+        </section>
+
+
+        <!-- REPORTS -->
+
+        <section>
+
+            <div class="section-header">
+
+                <h2>
+                    Recent Reports
+                </h2>
+
+                <span id="reportCount"></span>
+
+            </div>
+
+
+            <div
+                id="reportsContainer"
+                class="reports-grid"
+            >
+
+                <div class="loading">
+                    Loading reports...
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+
+        <p>
+            © 2026 CollegeBuddy
+        </p>
+
+    </footer>
+
+
+    <script src="./js/lost-found.js"></script>
+
+</body>
+
+</html>

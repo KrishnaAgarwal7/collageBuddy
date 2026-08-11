@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CollegeBuddy - Lost & Found</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f5f6f8;
+            color: #222;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 40px auto;
+        }
+
+        h1 {
+            margin-bottom: 5px;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .section {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 11px;
+            margin: 7px 0 15px;
+            border: 1px solid #ccc;
+            border-radius: 7px;
+            font-size: 15px;
+        }
+
+        textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        button {
+            padding: 10px 18px;
+            border: none;
+            border-radius: 7px;
+            cursor: pointer;
+            background: #222;
+            color: white;
+            font-size: 14px;
+        }
+
+        button:hover {
+            opacity: 0.85;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .tabs button {
+            background: #ddd;
+            color: #222;
+        }
+
+        .tabs button.active {
+            background: #222;
+            color: white;
+        }
+
+        .reports {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .report {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            border-left: 6px solid;
+        }
+
+        .report.lost {
+            border-color: #dc3545;
+        }
+
+        .report.found {
+            border-color: #198754;
+        }
+
+        .report-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background: #ddd;
+        }
+
+        .no-image {
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #777;
+            background: #eee;
+        }
+
+        .content {
+            padding: 18px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .lost .badge {
+            background: #f8d7da;
+            color: #842029;
+        }
+
+        .found .badge {
+            background: #d1e7dd;
+            color: #0f5132;
+        }
+
+        .content h2 {
+            margin: 5px 0 10px;
+        }
+
+        .content p {
+            color: #666;
+        }
+
+        .info {
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .message {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 6px;
+            display: none;
+        }
+
+        .success {
+            background: #d1e7dd;
+            color: #0f5132;
+        }
+
+        .error {
+            background: #f8d7da;
+            color: #842029;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>CollegeBuddy Lost & Found</h1>
+
+    <p class="subtitle">
+        Report lost items and help others find their belongings.
+    </p>
+
+
+    <!-- CREATE REPORT -->
+
+    <div class="section">
+
+        <h2>Create Report</h2>
+
+        <form id="reportForm">
+
+            <label>Title</label>
+            <input
+                type="text"
+                id="title"
+                placeholder="Example: Black Wallet"
+                required
+            >
+
+            <label>Description</label>
+            <textarea
+                id="description"
+                placeholder="Describe the item..."
+                required
+            ></textarea>
+
+            <label>Category</label>
+            <select id="category">
+
+                <option value="Electronics">
+                    Electronics
+                </option>
+
+                <option value="Wallet">
+                    Wallet
+                </option>
+
+                <option value="ID Card">
+                    ID Card
+                </option>
+
+                <option value="Books">
+                    Books
+                </option>
+
+                <option value="Keys">
+                    Keys
+                </option>
+
+                <option value="Clothing">
+                    Clothing
+                </option>
+
+                <option value="Accessories">
+                    Accessories
+                </option>
+
+                <option value="Others">
+                    Others
+                </option>
+
+            </select>
+
+
+            <label>Type</label>
+
+            <select id="type">
+
+                <option value="Lost">
+                    Lost
+                </option>
+
+                <option value="Found">
+                    Found
+                </option>
+
+            </select>
+
+
+            <label>Location</label>
+
+            <input
+                type="text"
+                id="location"
+                placeholder="Example: Central Library"
+                required
+            >
+
+
+            <label>Contact Number</label>
+
+            <input
+                type="text"
+                id="contactNumber"
+                placeholder="9876543210"
+            >
+
+
+            <label>Image</label>
+
+            <input
+                type="file"
+                id="image"
+                accept="image/*"
+            >
+
+
+            <button type="submit">
+                Report Item
+            </button>
+
+        </form>
+
+        <div id="message" class="message"></div>
+
+    </div>
+
+
+    <!-- REPORTS -->
+
+    <div class="section">
+
+        <h2>Lost & Found</h2>
+
+        <div class="tabs">
+
+            <button
+                id="allBtn"
+                class="active"
+                onclick="showReports('all')"
+            >
+                All
+            </button>
+
+            <button
+                id="lostBtn"
+                onclick="showReports('Lost')"
+            >
+                🔴 Lost
+            </button>
+
+            <button
+                id="foundBtn"
+                onclick="showReports('Found')"
+            >
+                🟢 Found
+            </button>
+
+            <button
+                onclick="getMyReports()"
+            >
+                My Reports
+            </button>
+
+        </div>
+
+        <div
+            id="reports"
+            class="reports"
+        ></div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+const API = "http://localhost:3000/lost-found";
+
+let allReports = [];
+
+
+/* =========================
+   CREATE REPORT
+========================= */
+
+document
+    .getElementById("reportForm")
+    .addEventListener("submit", async function(e) {
+
+        e.preventDefault();
+
+        const formData = new FormData();
+
+        formData.append(
+            "title",
+            document.getElementById("title").value
+        );
+
+        formData.append(
+            "description",
+            document.getElementById("description").value
+        );
+
+        formData.append(
+            "category",
+            document.getElementById("category").value
+        );
+
+        formData.append(
+            "type",
+            document.getElementById("type").value
+        );
+
+        formData.append(
+            "location",
+            document.getElementById("location").value
+        );
+
+        formData.append(
+            "contactNumber",
+            document.getElementById("contactNumber").value
+        );
+
+
+        const image =
+            document.getElementById("image").files[0];
+
+        if (image) {
+
+            formData.append(
+                "image",
+                image
+            );
+
+        }
+
+
+        try {
+
+            const response = await fetch(API, {
+
+                method: "POST",
+
+                credentials: "include",
+
+                body: formData
+
+            });
+
+
+            const data = await response.json();
+
+
+            if (!response.ok) {
+
+                throw new Error(
+                    data.message || "Something went wrong"
+                );
+
+            }
+
+
+            showMessage(
+                "Reported successfully!",
+                "success"
+            );
+
+
+            document
+                .getElementById("reportForm")
+                .reset();
+
+
+            getReports();
+
+
+        } catch (err) {
+
+            showMessage(
+                err.message,
+                "error"
+            );
+
+        }
+
+    });
+
+
+/* =========================
+   GET ALL REPORTS
+========================= */
+
+async function getReports() {
+
+    try {
+
+        const response = await fetch(API, {
+            credentials: "include"
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(data.message);
+        }
+
+        allReports = data.reports;
+
+        showReports("all");
+
+    } catch (err) {
+
+        showMessage(
+            err.message,
+            "error"
+        );
+
+    }
+
+}
+
+
+/* =========================
+   FILTER REPORTS
+========================= */
+
+function showReports(type) {
+
+    const container =
+        document.getElementById("reports");
+
+    container.innerHTML = "";
+
+
+    let reports = allReports;
+
+
+    if (type !== "all") {
+
+        reports = allReports.filter(
+            report => report.type === type
+        );
+
+    }
+
+
+    if (reports.length === 0) {
+
+        container.innerHTML =
+            "<p>No reports found.</p>";
+
+        return;
+
+    }
+
+
+    reports.forEach(report => {
+
+        createReportCard(
+            report,
+            container
+        );
+
+    });
+
+
+    updateTabs(type);
+
+}
+
+
+/* =========================
+   CREATE CARD
+========================= */
+
+function createReportCard(report, container) {
+
+    const card =
+        document.createElement("div");
+
+
+    card.className =
+        `report ${report.type.toLowerCase()}`;
+
+
+    let imageHTML = "";
+
+    if (report.imageUrl) {
+
+        imageHTML = `
+            <img
+                class="report-image"
+                src="http://localhost:3000${report.imageUrl}"
+                alt="${report.title}"
+            >
+        `;
+
+    } else {
+
+        imageHTML = `
+            <div class="no-image">
+                No Image
+            </div>
+        `;
+
+    }
+
+
+    const postedBy =
+        report.postedBy?.name || "Unknown";
+
+
+    card.innerHTML = `
+
+        ${imageHTML}
+
+        <div class="content">
+
+            <span class="badge">
+
+                ${
+                    report.type === "Lost"
+                    ? "🔴 LOST"
+                    : "🟢 FOUND"
+                }
+
+            </span>
+
+            <h2>
+                ${report.title}
+            </h2>
+
+            <p>
+                ${report.description}
+            </p>
+
+            <div class="info">
+
+                <div>
+                    📁 ${report.category}
+                </div>
+
+                <div>
+                    📍 ${report.location}
+                </div>
+
+                <div>
+                    👤 ${postedBy}
+                </div>
+
+                <div>
+                    📞 ${report.contactNumber || "Not provided"}
+                </div>
+
+            </div>
+
+        </div>
+
+    `;
+
+
+    container.appendChild(card);
+
+}
+
+
+/* =========================
+   MY REPORTS
+========================= */
+
+async function getMyReports() {
+
+    try {
+
+        const response =
+            await fetch(
+                `${API}/my-posts`,
+                {
+                    credentials: "include"
+                }
+            );
+
+
+        const data =
+            await response.json();
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                data.message
+            );
+
+        }
+
+
+        const container =
+            document.getElementById("reports");
+
+        container.innerHTML = "";
+
+
+        if (data.report.length === 0) {
+
+            container.innerHTML =
+                "<p>You haven't created any reports.</p>";
+
+            return;
+
+        }
+
+
+        data.report.forEach(report => {
+
+            createReportCard(
+                report,
+                container
+            );
+
+        });
+
+
+    } catch (err) {
+
+        showMessage(
+            err.message,
+            "error"
+        );
+
+    }
+
+}
+
+
+/* =========================
+   TAB UI
+========================= */
+
+function updateTabs(type) {
+
+    document
+        .querySelectorAll(".tabs button")
+        .forEach(btn => {
+
+            btn.classList.remove("active");
+
+        });
+
+
+    if (type === "all") {
+
+        document
+            .getElementById("allBtn")
+            .classList.add("active");
+
+    }
+
+
+    if (type === "Lost") {
+
+        document
+            .getElementById("lostBtn")
+            .classList.add("active");
+
+    }
+
+
+    if (type === "Found") {
+
+        document
+            .getElementById("foundBtn")
+            .classList.add("active");
+
+    }
+
+}
+
+
+/* =========================
+   MESSAGE
+========================= */
+
+function showMessage(text, type) {
+
+    const message =
+        document.getElementById("message");
+
+    message.textContent = text;
+
+    message.className =
+        `message ${type}`;
+
+    message.style.display = "block";
+
+
+    setTimeout(() => {
+
+        message.style.display = "none";
+
+    }, 3000);
+
+}
+
+
+/* Load reports initially */
+
+getReports();
+
+</script>
+
+</body>
+</html>

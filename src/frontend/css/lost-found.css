@@ -1,0 +1,529 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f6f8;
+    color: #222;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar {
+    height: 70px;
+    background: white;
+    border-bottom: 1px solid #ddd;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 6%;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.logo span {
+    color: #4f46e5;
+}
+
+.nav-links {
+    display: flex;
+    gap: 28px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #555;
+    font-size: 15px;
+}
+
+.nav-links a:hover,
+.nav-links .active {
+    color: #4f46e5;
+}
+
+.nav-right a {
+    text-decoration: none;
+    color: #333;
+}
+
+
+/* =========================
+   MAIN
+========================= */
+
+main {
+    width: 88%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+
+/* =========================
+   PAGE HEADER
+========================= */
+
+.page-header {
+    padding: 50px 0 30px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.page-header h1 {
+    font-size: 36px;
+    margin-bottom: 8px;
+}
+
+.page-header p {
+    color: #777;
+}
+
+.report-btn {
+    text-decoration: none;
+
+    background: #4f46e5;
+    color: white;
+
+    padding: 12px 18px;
+
+    border-radius: 8px;
+
+    font-size: 14px;
+}
+
+.report-btn:hover {
+    opacity: 0.9;
+}
+
+
+/* =========================
+   SEARCH
+========================= */
+
+.search-section {
+    display: flex;
+    gap: 12px;
+
+    margin-bottom: 35px;
+}
+
+.search-section input {
+    flex: 1;
+
+    padding: 14px 16px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 8px;
+
+    font-size: 15px;
+
+    outline: none;
+}
+
+.search-section input:focus {
+    border-color: #4f46e5;
+}
+
+.search-section select {
+    width: 180px;
+
+    padding: 14px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 8px;
+
+    background: white;
+
+    font-size: 14px;
+
+    outline: none;
+}
+
+
+/* =========================
+   SECTION HEADER
+========================= */
+
+.section-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    margin-bottom: 20px;
+}
+
+.section-header h2 {
+    font-size: 22px;
+}
+
+#reportCount {
+    color: #888;
+    font-size: 14px;
+}
+
+
+/* =========================
+   REPORT GRID
+========================= */
+
+.reports-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+
+/* =========================
+   REPORT CARD
+========================= */
+
+.report-card {
+    background: white;
+
+    border-radius: 12px;
+
+    overflow: hidden;
+
+    border: 1px solid #eee;
+
+    transition: 0.2s;
+}
+
+.report-card:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+
+/* =========================
+   IMAGE
+========================= */
+
+.report-image {
+    width: 100%;
+    height: 210px;
+
+    object-fit: cover;
+
+    display: block;
+}
+
+.no-image {
+    width: 100%;
+    height: 210px;
+
+    background: #f0f0f0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 50px;
+}
+
+
+/* =========================
+   CONTENT
+========================= */
+
+.report-content {
+    padding: 20px;
+}
+
+
+/* =========================
+   TOP
+========================= */
+
+.report-top {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 12px;
+}
+
+
+/* =========================
+   LOST / FOUND STATUS
+========================= */
+
+.status {
+    padding: 6px 10px;
+
+    border-radius: 6px;
+
+    font-size: 11px;
+
+    font-weight: bold;
+}
+
+
+/* RED */
+
+.status.lost {
+    background: #fee2e2;
+
+    color: #dc2626;
+}
+
+
+/* GREEN */
+
+.status.found {
+    background: #dcfce7;
+
+    color: #16a34a;
+}
+
+
+/* =========================
+   CATEGORY
+========================= */
+
+.category {
+    color: #777;
+
+    font-size: 12px;
+
+    text-transform: capitalize;
+}
+
+
+/* =========================
+   TITLE
+========================= */
+
+.report-card h2 {
+    font-size: 19px;
+
+    margin-bottom: 8px;
+}
+
+
+/* =========================
+   DESCRIPTION
+========================= */
+
+.description {
+    color: #777;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+
+    margin-bottom: 15px;
+
+    display: -webkit-box;
+
+    -webkit-line-clamp: 2;
+
+    -webkit-box-orient: vertical;
+
+    overflow: hidden;
+}
+
+
+/* =========================
+   LOCATION
+========================= */
+
+.location {
+    color: #555;
+
+    font-size: 13px;
+
+    margin-bottom: 18px;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.report-footer {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding-top: 15px;
+
+    border-top: 1px solid #eee;
+}
+
+.posted-by {
+    color: #888;
+
+    font-size: 12px;
+}
+
+
+/* =========================
+   VIEW BUTTON
+========================= */
+
+.view-btn {
+    text-decoration: none;
+
+    background: #f0efff;
+
+    color: #4f46e5;
+
+    padding: 8px 13px;
+
+    border-radius: 6px;
+
+    font-size: 13px;
+}
+
+.view-btn:hover {
+    background: #e5e3ff;
+}
+
+
+/* =========================
+   LOADING
+========================= */
+
+.loading {
+    grid-column: 1 / -1;
+
+    background: white;
+
+    padding: 50px;
+
+    text-align: center;
+
+    border-radius: 10px;
+
+    color: #777;
+}
+
+
+/* =========================
+   EMPTY
+========================= */
+
+.empty {
+    grid-column: 1 / -1;
+
+    background: white;
+
+    padding: 50px;
+
+    text-align: center;
+
+    border-radius: 10px;
+
+    color: #777;
+}
+
+.empty h3 {
+    margin-bottom: 8px;
+
+    color: #444;
+}
+
+
+/* =========================
+   ERROR
+========================= */
+
+.error {
+    grid-column: 1 / -1;
+
+    background: #fee2e2;
+
+    color: #dc2626;
+
+    padding: 25px;
+
+    text-align: center;
+
+    border-radius: 10px;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    margin-top: 70px;
+
+    padding: 30px;
+
+    text-align: center;
+
+    color: #888;
+
+    border-top: 1px solid #ddd;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+
+    .nav-links {
+        display: none;
+    }
+
+    .reports-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    main {
+        width: 92%;
+    }
+
+    .page-header {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 20px;
+    }
+
+    .search-section {
+        flex-direction: column;
+    }
+
+    .search-section select {
+        width: 100%;
+    }
+
+    .reports-grid {
+        grid-template-columns: 1fr;
+    }
+
+}

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Resources - CollegeBuddy</title>
+
+    <link rel="stylesheet" href="./css/resources.css">
+</head>
+
+<body>
+
+
+
+    <nav class="navbar">
+
+        <div class="logo">
+            College<span>Buddy</span>
+        </div>
+
+        <div class="nav-links">
+
+            <a href="index.html">Home</a>
+
+            <a href="resources.html" class="active">
+                Resources
+            </a>
+
+            <a href="lost-found.html">
+                Lost & Found
+            </a>
+
+            <a href="#">
+                Events
+            </a>
+
+        </div>
+
+        <div class="nav-right">
+
+            <a href="profile.html">
+                👤 Profile
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <main>
+
+        <!-- HEADER -->
+
+        <section class="page-header">
+
+            <div>
+
+                <h1>Study Resources</h1>
+
+                <p>
+                    Find notes, PDFs and useful study material
+                    shared by your college community.
+                </p>
+
+            </div>
+
+            <a
+                href="add-resources.html"
+                class="add-btn"
+            >
+                + Add Resource
+            </a>
+
+        </section>
+
+
+        <!-- SEARCH -->
+
+        <section class="search-section">
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search resources..."
+            >
+
+            <button id="searchBtn">
+                🔍 Search
+            </button>
+
+        </section>
+
+
+        <!-- FILTERS -->
+
+        <section class="filters">
+
+            <select id="semesterFilter">
+
+                <option value="">
+                    All Semesters
+                </option>
+
+                <option value="1">Semester 1</option>
+                <option value="2">Semester 2</option>
+                <option value="3">Semester 3</option>
+                <option value="4">Semester 4</option>
+                <option value="5">Semester 5</option>
+                <option value="6">Semester 6</option>
+                <option value="7">Semester 7</option>
+                <option value="8">Semester 8</option>
+
+            </select>
+
+
+            <input
+                type="text"
+                id="courseFilter"
+                placeholder="Course ID (e.g. CS201)"
+            >
+
+
+            <select id="typeFilter">
+
+                <option value="">
+                    All Types
+                </option>
+
+                <option value="file">
+                    Files
+                </option>
+
+                <option value="link">
+                    Links
+                </option>
+
+            </select>
+
+
+            <button id="filterBtn">
+                Apply Filters
+            </button>
+
+            <button
+                id="clearBtn"
+                class="clear-btn"
+            >
+                Clear
+            </button>
+
+        </section>
+
+
+        <!-- RESOURCES -->
+
+        <section>
+
+            <div class="results-header">
+
+                <h2>Resources</h2>
+
+                <span id="resultCount"></span>
+
+            </div>
+
+
+            <div
+                id="resourcesContainer"
+                class="resources-grid"
+            >
+
+                <div class="loading">
+                    Loading resources...
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+
+        <p>
+            © 2026 CollegeBuddy
+        </p>
+
+    </footer>
+
+
+    <script src="./js/resources.js"></script>
+
+</body>
+
+</html>

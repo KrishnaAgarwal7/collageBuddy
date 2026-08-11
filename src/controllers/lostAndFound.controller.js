@@ -7,7 +7,6 @@ module.exports.createPost = async (req, res) => {
       category,
       type,
       location,
-      imageUrl,
       contactNumber,
     } = req.body;
     const report = await lostAndFound.create({
@@ -16,11 +15,15 @@ module.exports.createPost = async (req, res) => {
       category,
       type,
       location,
-      imageUrl,
+
+        imageUrl: req.file
+                ? `/uploads/lost-found/${req.file.filename}`
+                : "",
+                
       contactNumber,
       postedBy: req.user._id,
     });
-     return  res.status(200).json({
+     return  res.status(201).json({
       message: "Reported Successfully!",
       report,
     });
@@ -36,11 +39,82 @@ module.exports.getAllPost = async (req , res)=>{
     .populate("postedBy" , "name email")
     .sort({createdAt:-1});
 
-    return res.status(201).json({
+    return res.status(200).json({
       message:"Fetched all reports",
       reports
     })
 
+  } catch(err) {
+    return res.status(500).json({
+      message:err.message
+    })
+  }
+}
+module.exports.getSinglePost = async (req , res) =>{
+  try{
+    const report = await lostAndFound.findById(req.params.id)
+    .populate("postedBy" , "name email")
+
+    if(!report) {
+      return res.status(404).json({
+        message:"Report not found"
+      })
+    }
+
+    return res.status(200).json({
+      message:"Fetched post",
+      report
+    })
+  }catch(err) {
+    return res.status(500).json({
+      message:err.message
+    })
+  }
+  
+}
+module.exports.getMyPosts = async (req , res)=>{
+  try{
+    const report = await lostAndFound.find({
+      postedBy:req.user._id
+    }).sort({createdAt:-1})
+    if(report.length === 0) {
+      return res.status(404).json({
+        message:"No reports by user"
+      })
+    }
+    return res.status(200).json({
+      message:"Fetched reports",
+      report
+    })
+  } catch(err) {
+    return res.status(500).json({
+      message:err.message
+    })
+  }
+}
+module.exports.updatePost = async (req , res)=>{
+  try {
+    const report = await lostAndFound.findById(req.params.id)
+    if(!report) {
+      return res.status(404).json({
+        message:"Report not found"
+      })
+    }
+    if(report.postedBy.toString() !== req.user._id) {
+      return res.status(403).json({
+        message:"You are not allowed to update this post"
+      })
+    }
+    report.title = req.body.title,
+    report.description = req.body.description,
+    report.location = req.body.description
+
+    await report.save()
+
+    return res.status(200).json({
+    message: "Report updated successfully",
+    report
+});
   } catch(err) {
     return res.status(500).json({
       message:err.message

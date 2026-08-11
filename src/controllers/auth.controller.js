@@ -33,7 +33,11 @@ module.exports.login_post = async (req , res)=> {
   try{
     const token =  createToken(user._id);
     res.cookie("jwt", token, { httpOnly: true, maxAge: maxTime * 1000 });
-    res.status(200).json({user: user._id, message: "User logged in successfully"});
+    res.status(200).json({
+      user: user._id,
+      profileCompleted: user.profileCompleted,
+      message: "User logged in successfully"
+    });
   }catch(err) {
     console.log(err);
   }

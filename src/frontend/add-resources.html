@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Add Resource - CollegeBuddy</title>
+
+    <link rel="stylesheet" href="./css/add-resources.css">
+</head>
+
+<body>
+
+    <nav class="navbar">
+
+        <div class="logo">
+            College<span>Buddy</span>
+        </div>
+
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="resources.html" class="active">Resources</a>
+            <a href="lost-found.html">Lost & Found</a>
+        </div>
+
+        <a href="profile.html">
+            👤 Profile
+        </a>
+
+    </nav>
+
+
+    <main>
+
+        <div class="page-header">
+
+            <h1>Add Resource</h1>
+
+            <p>
+                Share useful study material with your college community.
+            </p>
+
+        </div>
+
+
+        <form id="resourceForm">
+
+            <!-- TITLE -->
+
+            <div class="form-group">
+
+                <label for="title">
+                    Title
+                </label>
+
+                <input
+                    type="text"
+                    id="title"
+                    placeholder="e.g. Data Structures Unit 1"
+                    required
+                >
+
+            </div>
+
+
+            <!-- DESCRIPTION -->
+
+            <div class="form-group">
+
+                <label for="description">
+                    Description
+                </label>
+
+                <textarea
+                    id="description"
+                    placeholder="Describe the resource..."
+                ></textarea>
+
+            </div>
+
+
+            <!-- COURSE -->
+
+            <div class="form-group">
+
+                <label for="courseId">
+                    Course ID
+                </label>
+
+                <input
+                    type="text"
+                    id="courseId"
+                    placeholder="e.g. CS201"
+                    required
+                >
+
+            </div>
+
+
+            <!-- SEMESTER -->
+
+            <div class="form-group">
+
+                <label for="semester">
+                    Semester
+                </label>
+
+                <select id="semester" required>
+
+                    <option value="">
+                        Select Semester
+                    </option>
+
+                    <option value="1">Semester 1</option>
+                    <option value="2">Semester 2</option>
+                    <option value="3">Semester 3</option>
+                    <option value="4">Semester 4</option>
+                    <option value="5">Semester 5</option>
+                    <option value="6">Semester 6</option>
+                    <option value="7">Semester 7</option>
+                    <option value="8">Semester 8</option>
+
+                </select>
+
+            </div>
+
+
+            <!-- RESOURCE TYPE -->
+
+            <div class="form-group">
+
+                <label>
+                    Resource Type
+                </label>
+
+                <div class="type-options">
+
+                    <label class="radio-option">
+
+                        <input
+                            type="radio"
+                            name="resourceType"
+                            value="file"
+                            checked
+                        >
+
+                        📄 File
+
+                    </label>
+
+
+                    <label class="radio-option">
+
+                        <input
+                            type="radio"
+                            name="resourceType"
+                            value="link"
+                        >
+
+                        🔗 External Link
+
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <!-- FILE -->
+
+            <div
+                class="form-group"
+                id="fileSection"
+            >
+
+                <label for="resourceFile">
+                    Upload File
+                </label>
+
+                <input
+                    type="file"
+                    id="resourceFile"
+                    accept=".pdf,.doc,.docx,.ppt,.pptx"
+                >
+
+                <small>
+                    PDF, DOC, DOCX, PPT or PPTX
+                </small>
+
+            </div>
+
+
+            <!-- LINK -->
+
+            <div
+                class="form-group hidden"
+                id="linkSection"
+            >
+
+                <label for="externalLink">
+                    External Link
+                </label>
+
+                <input
+                    type="url"
+                    id="externalLink"
+                    placeholder="https://drive.google.com/..."
+                >
+
+                <small>
+                    You can add a Google Drive or other external link.
+                </small>
+
+            </div>
+
+
+            <button
+                type="submit"
+                id="submitBtn"
+            >
+                Add Resource
+            </button>
+
+
+            <p id="message"></p>
+
+        </form>
+
+    </main>
+
+
+    <script src="./js/add-resources.js"></script>
+
+</body>
+
+</html>

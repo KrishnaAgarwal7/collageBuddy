@@ -7,7 +7,7 @@ const notesSchema = new mongoose.Schema({
   description:{
     type:String,
   },
-  courseID:{
+  courseId:{
     type:String,
     required:true
   },
@@ -15,10 +15,22 @@ const notesSchema = new mongoose.Schema({
     type:Number,
     required:true
   },
+  resourceType:{
+    type:String,
+    enum:['file' , 'link']
+  },
   fileUrl:{
     type:String,
-    required:true
+    required: function() {
+      return this.resourceType == 'file;'
+    }
   },
+  externalLink:{
+    type:String,
+     required: function() {
+      return this.resourceType == 'link;'
+    }
+},
   uploadedBy:{
     type:mongoose.Schema.Types.ObjectId,
     ref:'User',
