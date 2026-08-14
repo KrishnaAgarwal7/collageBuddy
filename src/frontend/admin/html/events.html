@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Manage Events - CollegeBuddy</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/admin.css"
+    >
+</head>
+
+<body>
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            College<span>Buddy</span>
+        </div>
+
+        <div class="admin-label">
+            ADMIN PANEL
+        </div>
+
+        <nav>
+
+            <a href="admin.html">
+                📊 Dashboard
+            </a>
+
+            <a href="users.html">
+                👥 Users
+            </a>
+
+            <a
+                href="events.html"
+                class="active"
+            >
+                📅 Events
+            </a>
+
+            <a href="../resources.html">
+                📚 Resources
+            </a>
+
+            <a href="../lost-found.html">
+                🔎 Lost & Found
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <a href="../index.html">
+                ← Back to CollegeBuddy
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <main class="main">
+
+        <header class="topbar">
+
+            <div>
+
+                <h1>
+                    Events
+                </h1>
+
+                <p>
+                    Add and manage CollegeBuddy events.
+                </p>
+
+            </div>
+
+            <div class="admin-profile">
+                🛡️ Administrator
+            </div>
+
+        </header>
+
+
+        <section class="event-layout">
+
+
+            <!-- ADD / EDIT FORM -->
+
+            <div class="event-form-card">
+
+                <h2 id="formTitle">
+                    Add Event
+                </h2>
+
+
+                <form id="eventForm">
+
+                    <input
+                        type="hidden"
+                        id="eventId"
+                    >
+
+
+                    <label>
+                        Event Title
+                    </label>
+
+                    <input
+                        type="text"
+                        id="title"
+                        placeholder="Hackathon 2026"
+                        required
+                    >
+
+
+                    <label>
+                        Description
+                    </label>
+
+                    <textarea
+                        id="description"
+                        placeholder="Event description..."
+                    ></textarea>
+
+
+                    <label>
+                        Organizer
+                    </label>
+
+                    <input
+                        type="text"
+                        id="organizer"
+                        placeholder="CollegeBuddy"
+                    >
+
+
+                    <label>
+                        Event Type
+                    </label>
+
+                    <select id="type">
+
+                        <option value="hackathon">
+                            Hackathon
+                        </option>
+
+                        <option value="workshop">
+                            Workshop
+                        </option>
+
+                        <option value="competition">
+                            Competition
+                        </option>
+
+                        <option value="seminar">
+                            Seminar
+                        </option>
+
+                        <option value="other">
+                            Other
+                        </option>
+
+                    </select>
+
+
+                    <label>
+                        Event Date
+                    </label>
+
+                    <input
+                        type="datetime-local"
+                        id="eventDate"
+                        required
+                    >
+
+
+                    <label>
+                        Registration Deadline
+                    </label>
+
+                    <input
+                        type="datetime-local"
+                        id="registrationDeadline"
+                    >
+
+
+                    <label>
+                        Location
+                    </label>
+
+                    <input
+                        type="text"
+                        id="location"
+                        placeholder="IIIT Guwahati"
+                    >
+
+
+                    <label>
+                        Registration URL
+                    </label>
+
+                    <input
+                        type="url"
+                        id="registrationUrl"
+                        placeholder="https://..."
+                    >
+
+
+                    <label>
+                        Image URL
+                    </label>
+
+                    <input
+                        type="url"
+                        id="imageUrl"
+                        placeholder="https://..."
+                    >
+
+
+                    <div class="form-buttons">
+
+                        <button
+                            type="submit"
+                            class="primary-btn"
+                            id="submitBtn"
+                        >
+                            Add Event
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="cancel-btn hidden"
+                            id="cancelBtn"
+                        >
+                            Cancel
+                        </button>
+
+                    </div>
+
+
+                    <p id="eventMessage"></p>
+
+                </form>
+
+            </div>
+
+
+            <!-- EVENTS LIST -->
+
+            <div class="events-list-card">
+
+                <div class="events-list-header">
+
+                    <h2>
+                        All Events
+                    </h2>
+
+                    <span id="eventCount">
+                        0
+                    </span>
+
+                </div>
+
+
+                <div
+                    id="eventsList"
+                    class="events-list"
+                >
+
+                    <div class="loading">
+                        Loading events...
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="../js/events.js"></script>
+
+</body>
+
+</html>

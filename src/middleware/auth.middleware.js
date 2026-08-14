@@ -3,13 +3,17 @@ const User = require("../models/auth.model");
 require("dotenv").config();
 
 const requireAuth = (req, res, next) => {
-    const token = req.cookies.jwt;
+  
+    const bearer = req.headers.authorization?.startsWith("Bearer ")
+        ? req.headers.authorization.split(" ")[1]
+        : null;
+
+    const token = req.cookies.jwt || bearer;
 
     if (!token) {
-        return res.status(401).json({
-            message: "No token found"
-        });
+        return res.status(401).json({ message: "No token found" });
     }
+
 
     jwt.verify(token, process.env.JWT_SECRET, async (err, decodedToken) => {
 

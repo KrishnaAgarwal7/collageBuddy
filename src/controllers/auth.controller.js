@@ -19,7 +19,7 @@ module.exports.signup_post = async (req, res) => {
     const user = await User.create({ name, email, password });
     const token = createToken(user._id);
     res.cookie("jwt", token, { httpOnly: true, maxAge: maxTime * 1000 });
-    res.status(201).json({user: user._id, message: "User created successfully"});
+    res.status(201).json({user: user._id,token, message: "User created successfully"});
   } catch (err) {
     console.log(err);
   }
@@ -30,11 +30,17 @@ module.exports.login_post = async (req , res)=> {
   if(!user) {
     return res.status(400).json({message: "User not found"});
   }
+  if(user.isBlocked) {
+    return res.status(403).json({
+      message:"your account has been blocked , please contact admin"
+    })
+  }
   try{
     const token =  createToken(user._id);
     res.cookie("jwt", token, { httpOnly: true, maxAge: maxTime * 1000 });
     res.status(200).json({
       user: user._id,
+      token,
       profileCompleted: user.profileCompleted,
       message: "User logged in successfully"
     });

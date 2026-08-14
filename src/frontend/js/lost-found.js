@@ -190,7 +190,7 @@ function displayReports(reports) {
 
 
                     <a
-                        href="lost-found-detail.html?id=${report._id}"
+                        href="lost-found-details.html?id=${report._id}"
                         class="view-btn"
                     >
                         View

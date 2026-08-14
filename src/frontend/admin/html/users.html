@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Manage Users - CollegeBuddy</title>
+
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+
+<body>
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            College<span>Buddy</span>
+        </div>
+
+        <div class="admin-label">
+            ADMIN PANEL
+        </div>
+
+        <nav>
+
+            <a href="admin.html">
+                📊 Dashboard
+            </a>
+
+            <a href="users.html" class="active">
+                👥 Users
+            </a>
+
+            <a href="events.html">
+                📅 Events
+            </a>
+
+            <a href="../resources.html">
+                📚 Resources
+            </a>
+
+            <a href="../lost-found.html">
+                🔎 Lost & Found
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+            <a href="../index.html">
+                ← Back to CollegeBuddy
+            </a>
+        </div>
+
+    </aside>
+
+
+    <main class="main">
+
+        <header class="topbar">
+
+            <div>
+                <h1>Users</h1>
+
+                <p>
+                    Manage CollegeBuddy users.
+                </p>
+            </div>
+
+            <div class="admin-profile">
+                🛡️ Administrator
+            </div>
+
+        </header>
+
+
+        <section class="section">
+
+            <div class="table-header">
+
+                <div>
+                    <h2>All Users</h2>
+
+                    <p id="userCount">
+                        Loading users...
+                    </p>
+                </div>
+
+                <input
+                    type="text"
+                    id="searchUsers"
+                    placeholder="Search users..."
+                >
+
+            </div>
+
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="usersTable">
+
+                        <tr>
+                            <td colspan="5" class="loading">
+                                Loading users...
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="../js/users.js"></script>
+
+</body>
+
+</html>

@@ -107,7 +107,7 @@ module.exports.updatePost = async (req , res)=>{
     }
     report.title = req.body.title,
     report.description = req.body.description,
-    report.location = req.body.description
+    report.location = req.body.location
 
     await report.save()
 

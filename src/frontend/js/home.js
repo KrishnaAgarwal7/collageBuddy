@@ -118,6 +118,319 @@ async function loadResources() {
     }
 }
 
+// async function loadEvents() {
+//     try {
+//         const response = await fetch(
+//             `${API}/events`,
+//             {
+//                 credentials: "include"
+//             }
+//         );
+//         const data = await response.json();
+//         if (!response.ok) {
+//             throw new Error(data.message);
+//         }
+//         const container = document.getElementById("eventsContainer");
+//     }catch(err) {
+//         return res.status(500).json({
+//             message: err.message
+//         });
+//     }
+// }
+
+
+
+const homeEventsContainer =
+    document.getElementById(
+        "homeEventsContainer"
+    );
+
+
+// ============================
+// LOAD UPCOMING EVENTS
+// ============================
+
+async function loadUpcomingEvents() {
+
+    try {
+
+        const response = await fetch(
+            `${API}/events`
+        );
+
+
+        const data =
+            await response.json();
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                data.message ||
+                "Failed to load events"
+            );
+
+        }
+
+
+        let events =
+            data.events || [];
+
+
+        // Only future events
+        const now = new Date();
+
+
+        events = events.filter(event => {
+
+            if (!event.eventDate) {
+                return false;
+            }
+
+            return new Date(event.eventDate) >= now;
+
+        });
+
+
+        // Sort nearest event first
+        events.sort((a, b) => {
+
+            return (
+                new Date(a.eventDate) -
+                new Date(b.eventDate)
+            );
+
+        });
+
+
+        // Only show first 3
+        events =
+            events.slice(0, 3);
+
+
+        displayUpcomingEvents(events);
+
+
+    } catch (err) {
+
+        console.error(err);
+
+        homeEventsContainer.innerHTML = `
+            <div class="home-error">
+                Failed to load upcoming events.
+            </div>
+        `;
+
+    }
+
+}
+
+
+// ============================
+// DISPLAY
+// ============================
+
+function displayUpcomingEvents(events) {
+
+    if (events.length === 0) {
+
+        homeEventsContainer.innerHTML = `
+            <div class="home-empty">
+                No upcoming events at the moment.
+            </div>
+        `;
+
+        return;
+    }
+
+
+    homeEventsContainer.innerHTML = "";
+
+
+    events.forEach(event => {
+
+        const card =
+            document.createElement("article");
+
+
+        card.className =
+            "home-event-card";
+
+
+        let imageHTML;
+
+
+        if (event.imageUrl) {
+
+            imageHTML = `
+                <img
+                    src="${escapeHTML(
+                        event.imageUrl
+                    )}"
+                    alt="${escapeHTML(
+                        event.title
+                    )}"
+                    class="home-event-image"
+                >
+            `;
+
+        } else {
+
+            imageHTML = `
+                <div class="home-event-no-image">
+                    📅
+                </div>
+            `;
+
+        }
+
+
+        card.innerHTML = `
+
+            ${imageHTML}
+
+
+            <div class="home-event-content">
+
+
+                <span class="home-event-type">
+                    ${escapeHTML(
+                        event.type || "event"
+                    )}
+                </span>
+
+
+                <h3>
+                    ${escapeHTML(
+                        event.title
+                    )}
+                </h3>
+
+
+                <p class="home-event-description">
+
+                    ${escapeHTML(
+                        event.description ||
+                        "No description available."
+                    )}
+
+                </p>
+
+
+                <div class="home-event-meta">
+
+                    <span>
+                        📅
+                        ${formatDate(
+                            event.eventDate
+                        )}
+                    </span>
+
+
+                    ${
+                        event.location
+
+                        ? `
+                            <span>
+                                📍
+                                ${escapeHTML(
+                                    event.location
+                                )}
+                            </span>
+                        `
+
+                        : ""
+                    }
+
+                </div>
+
+
+                ${
+                    event.registrationUrl
+
+                    ? `
+                        <a
+                            href="${escapeAttribute(
+                                event.registrationUrl
+                            )}"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="home-event-btn"
+                        >
+                            View / Register →
+                        </a>
+                    `
+
+                    : `
+                        <a
+                            href="events.html"
+                            class="home-event-btn"
+                        >
+                            View Event →
+                        </a>
+                    `
+                }
+
+            </div>
+
+        `;
+
+
+        homeEventsContainer.appendChild(card);
+
+    });
+
+}
+
+
+// ============================
+// DATE
+// ============================
+
+function formatDate(date) {
+
+    return new Date(date).toLocaleString(
+        "en-IN",
+        {
+            day: "numeric",
+            month: "short",
+            year: "numeric",
+            hour: "numeric",
+            minute: "2-digit"
+        }
+    );
+
+}
+
+
+// ============================
+// BASIC ESCAPING
+// ============================
+
+function escapeHTML(value) {
+
+    return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+
+}
+
+
+function escapeAttribute(value) {
+
+    return String(value)
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+}
+
+
+// ============================
+// START
+// ============================
+
 
 // =============================
 // GET RECENT LOST & FOUND
@@ -251,3 +564,4 @@ document
 loadUser();
 loadResources();
 loadLostFound();
+loadUpcomingEvents();

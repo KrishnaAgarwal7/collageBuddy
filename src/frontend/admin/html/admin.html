@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard - CollegeBuddy</title>
+
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            College<span>Buddy</span>
+        </div>
+
+        <div class="admin-label">
+            ADMIN PANEL
+        </div>
+
+        <nav>
+
+            <a href="admin.html" class="active">
+                📊 Dashboard
+            </a>
+
+            <a href="users.html">
+                👥 Users
+            </a>
+
+            <a href="events.html">
+                📅 Events
+            </a>
+
+            <a href="../resources.html">
+                📚 Resources
+            </a>
+
+            <a href="../lost-found.html">
+                🔎 Lost & Found
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <a href="../index.html">
+                ← Back to CollegeBuddy
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+
+    <main class="main">
+
+        <!-- HEADER -->
+
+        <header class="topbar">
+
+            <div>
+
+                <h1>
+                    Dashboard
+                </h1>
+
+                <p>
+                    Manage your CollegeBuddy platform.
+                </p>
+
+            </div>
+
+            <div class="admin-profile">
+                🛡️ Administrator
+            </div>
+
+        </header>
+
+
+        <!-- STATS -->
+
+        <section class="stats">
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    👥
+                </div>
+
+                <div>
+
+                    <p>
+                        Total Users
+                    </p>
+
+                    <h2 id="totalUsers">
+                        -
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    🚫
+                </div>
+
+                <div>
+
+                    <p>
+                        Blocked Users
+                    </p>
+
+                    <h2 id="blockedUsers">
+                        -
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    📅
+                </div>
+
+                <div>
+
+                    <p>
+                        Total Events
+                    </p>
+
+                    <h2 id="totalEvents">
+                        -
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- QUICK ACTIONS -->
+
+        <section class="section">
+
+            <h2>
+                Quick Actions
+            </h2>
+
+
+            <div class="quick-actions">
+
+                <a
+                    href="events.html"
+                    class="action-card"
+                >
+
+                    <div>
+                        📅
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Manage Events
+                        </h3>
+
+                        <p>
+                            Add, edit or delete events
+                        </p>
+
+                    </div>
+
+                </a>
+
+
+                <a
+                    href="users.html"
+                    class="action-card"
+                >
+
+                    <div>
+                        👥
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Manage Users
+                        </h3>
+
+                        <p>
+                            View, block or unblock users
+                        </p>
+
+                    </div>
+
+                </a>
+
+
+                <a
+                    href="../resources.html"
+                    class="action-card"
+                >
+
+                    <div>
+                        📚
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Resources
+                        </h3>
+
+                        <p>
+                            View uploaded resources
+                        </p>
+
+                    </div>
+
+                </a>
+
+
+                <a
+                    href="../lost-found.html"
+                    class="action-card"
+                >
+
+                    <div>
+                        🔎
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Lost & Found
+                        </h3>
+
+                        <p>
+                            Review community reports
+                        </p>
+
+                    </div>
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- RECENT EVENTS -->
+
+        <section class="section">
+
+            <div class="section-heading">
+
+                <h2>
+                    Recent Events
+                </h2>
+
+                <a href="events.html">
+                    Manage Events →
+                </a>
+
+            </div>
+
+
+            <div
+                id="eventsContainer"
+                class="events-container"
+            >
+
+                <div class="loading">
+                    Loading events...
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="../js/admin.js"></script>
+
+</body>
+
+</html>

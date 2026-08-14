@@ -36,6 +36,10 @@ const userSchema = new mongoose.Schema({
     enum:['student' , 'admin'],
     default:'student'
   },
+  isBlocked:{
+    type:Boolean,
+    default:false
+  },
   profileCompleted:{
     type:Boolean,
     default:false

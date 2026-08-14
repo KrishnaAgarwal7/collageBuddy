@@ -1,0 +1,26 @@
+{
+  "expo": {
+    "name": "Campus Connect",
+    "slug": "campus-connect",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.campusconnect.app"
+    },
+    "android": {
+      "package": "com.campusconnect.app",
+      "permissions": ["CAMERA", "READ_EXTERNAL_STORAGE", "WRITE_EXTERNAL_STORAGE"]
+    },
+    "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Allow Campus Connect to access your photos to attach images to lost & found reports."
+        }
+      ]
+    ]
+  }
+}

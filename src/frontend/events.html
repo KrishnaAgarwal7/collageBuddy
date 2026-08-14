@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Events - CollegeBuddy</title>
+
+    <link rel="stylesheet" href="./css/events.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            College<span>Buddy</span>
+        </div>
+
+        <div class="nav-links">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="resources.html">
+                Resources
+            </a>
+
+            <a href="lost-found.html">
+                Lost & Found
+            </a>
+
+            <a href="events.html" class="active">
+                Events
+            </a>
+
+        </div>
+
+        <a href="profile.html" class="profile-btn">
+            👤 Profile
+        </a>
+
+    </nav>
+
+
+    <!-- MAIN -->
+
+    <main class="container">
+
+        <section class="hero">
+
+            <div>
+
+                <p class="eyebrow">
+                    COLLEGEBUDDY
+                </p>
+
+                <h1>
+                    Upcoming Events
+                </h1>
+
+                <p>
+                    Discover hackathons, workshops,
+                    competitions and other events
+                    happening around you.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- FILTER -->
+
+        <section class="filters">
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search events..."
+            >
+
+
+            <select id="typeFilter">
+
+                <option value="all">
+                    All Events
+                </option>
+
+                <option value="hackathon">
+                    Hackathons
+                </option>
+
+                <option value="workshop">
+                    Workshops
+                </option>
+
+                <option value="competition">
+                    Competitions
+                </option>
+
+                <option value="seminar">
+                    Seminars
+                </option>
+
+                <option value="other">
+                    Other
+                </option>
+
+            </select>
+
+        </section>
+
+
+        <!-- EVENTS -->
+
+        <section>
+
+            <div
+                id="eventsContainer"
+                class="events-grid"
+            >
+
+                <div class="loading">
+                    Loading events...
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="./js/events.js"></script>
+
+</body>
+
+</html>

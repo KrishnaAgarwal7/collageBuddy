@@ -1,0 +1,166 @@
+/* =========================
+   TABLE
+========================= */
+
+.table-header {
+    background: white;
+
+    padding: 20px 25px;
+
+    border: 1px solid #eee;
+    border-bottom: none;
+
+    border-radius: 12px 12px 0 0;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+.table-header h2 {
+    font-size: 19px;
+
+    margin-bottom: 5px;
+}
+
+.table-header p {
+    color: #888;
+
+    font-size: 13px;
+}
+
+.table-header input {
+    width: 250px;
+
+    padding: 11px 13px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 7px;
+
+    outline: none;
+}
+
+.table-header input:focus {
+    border-color: #4f46e5;
+}
+
+.table-container {
+    background: white;
+
+    border: 1px solid #eee;
+
+    border-radius: 0 0 12px 12px;
+
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+
+    border-collapse: collapse;
+}
+
+thead {
+    background: #f8f8f8;
+}
+
+th {
+    text-align: left;
+
+    padding: 15px 20px;
+
+    font-size: 12px;
+
+    color: #777;
+
+    text-transform: uppercase;
+}
+
+td {
+    padding: 17px 20px;
+
+    border-top: 1px solid #eee;
+
+    font-size: 14px;
+}
+
+.role {
+    padding: 5px 9px;
+
+    border-radius: 5px;
+
+    font-size: 11px;
+
+    text-transform: uppercase;
+}
+
+.role.admin {
+    background: #ede9fe;
+
+    color: #6d28d9;
+}
+
+.role.user {
+    background: #f1f5f9;
+
+    color: #475569;
+}
+
+.status-badge {
+    padding: 5px 9px;
+
+    border-radius: 5px;
+
+    font-size: 11px;
+}
+
+.active-status {
+    background: #dcfce7;
+
+    color: #16a34a;
+}
+
+.status-badge.blocked {
+    background: #fee2e2;
+
+    color: #dc2626;
+}
+
+.block-btn,
+.unblock-btn {
+    border: none;
+
+    padding: 7px 12px;
+
+    border-radius: 6px;
+
+    cursor: pointer;
+
+    font-size: 12px;
+}
+
+.block-btn {
+    background: #fee2e2;
+
+    color: #dc2626;
+}
+
+.unblock-btn {
+    background: #dcfce7;
+
+    color: #16a34a;
+}
+
+.block-btn:hover,
+.unblock-btn:hover {
+    opacity: 0.8;
+}
+
+.admin-text {
+    color: #6d28d9;
+
+    font-size: 12px;
+}
